@@ -1,6 +1,6 @@
 from code.Menu import Menu
 from code.Const import WIN_WIDTH, WIN_HEIGHT
-
+from code.Game import Game
 import pygame
 
 print("Setup start")
@@ -10,20 +10,16 @@ print("Setup end")
 
 print("Loop start")
 
-from code.Game import Game
-
-menu = Menu(window)
-option = menu.run()
-
-if option == "START":
-    game = Game(window)
-    game.run()
-
-print(option)
 while True:
-    #Check for all events
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit() #Close window
-            quit() #end pygame
+    menu = Menu(window)
+    option = menu.run()
 
+    print(option)
+
+    if option == "START":
+        game = Game(window)
+        game.run()
+
+    elif option == "EXIT":
+        pygame.quit()
+        quit()

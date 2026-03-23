@@ -4,14 +4,11 @@ import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
 
-# CORES
 C_WHITE = (255, 255, 255)
 C_YELLOW = (255, 255, 0)
 
-# TAMANHO DA TELA
 WIN_WIDTH = 800
 
-# OPÇÕES DO MENU
 MENU_OPTION = ("START", "EXIT")
 
 
@@ -28,26 +25,22 @@ class Menu:
 
 
         while True:
-            # DESENHAR FUNDO
             self.window.blit(self.surf, self.rect)
             self.window.blit(self.boar, (97, 200))
 
-            # TÍTULO
             self.menu_text(50, "CITY SCAPE", C_WHITE, (WIN_WIDTH / 2, 100))
+            self.menu_text(20, "ENTER - START", (255, 255, 255), (WIN_WIDTH / 2, 330))
+            self.menu_text(20, "ESPAÇO - PULAR", (255, 255, 255), (WIN_WIDTH / 2, 300))
 
-            # OPÇÕES
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
                     self.menu_text(30, MENU_OPTION[i], C_YELLOW, (WIN_WIDTH / 2, 200 + 40 * i))
                 else:
                     self.menu_text(30, MENU_OPTION[i], C_WHITE, (WIN_WIDTH / 2, 200 + 40 * i))
 
-            # CONTROLES
-            self.menu_text(20, "ESPAÇO - PULAR", C_WHITE, (WIN_WIDTH / 2, 350))
-
             pygame.display.flip()
 
-            # EVENTOS
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
